@@ -1,0 +1,267 @@
+.ticket-wrapper {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.wedding-ticket {
+  display: flex;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  max-width: 650px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+}
+
+/* Glassmorphism theme specific ticket adjustments */
+.wedding-ticket.celestial {
+  background: rgba(20, 27, 53, 0.6);
+  border-color: rgba(223, 177, 91, 0.3);
+}
+
+.wedding-ticket.synthwave {
+  background: rgba(36, 9, 71, 0.6);
+  border-color: rgba(255, 0, 127, 0.4);
+  border-radius: 0px;
+}
+
+.ticket-main {
+  flex: 3;
+  padding: 30px;
+  position: relative;
+}
+
+.ticket-tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  background: var(--gold-light);
+  color: var(--charcoal);
+  padding: 4px 10px;
+  border-radius: 2px;
+  margin-bottom: 15px;
+}
+
+.ticket-names {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--gold-light);
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.ticket-divider {
+  height: 1px;
+  background: linear-gradient(to right, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+  margin-bottom: 20px;
+}
+
+.ticket-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 25px;
+  margin-bottom: 25px;
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  color: var(--gold-light);
+  opacity: 0.8;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.info-value {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.info-value.status-yes {
+  color: #a7f3d0;
+}
+
+.info-value.status-no {
+  color: #fca5a5;
+}
+
+.ticket-date-venue {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  opacity: 0.8;
+  letter-spacing: 1px;
+}
+
+.dot {
+  color: var(--gold-light);
+}
+
+/* Stub/Barcode area */
+.ticket-stub {
+  flex: 1.2;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 2px dashed rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* Rounded cutouts at ticket connection */
+.ticket-stub::before,
+.ticket-stub::after {
+  content: '';
+  position: absolute;
+  left: -9px;
+  width: 16px;
+  height: 16px;
+  background: var(--cream);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.ticket-stub::before { top: -8px; }
+.ticket-stub::after { bottom: -8px; }
+
+/* Theme modifications to cutouts */
+.wedding-ticket.celestial .ticket-stub::before,
+.wedding-ticket.celestial .ticket-stub::after {
+  background: #0c1020;
+}
+
+.wedding-ticket.synthwave .ticket-stub::before,
+.wedding-ticket.synthwave .ticket-stub::after {
+  background: #120424;
+}
+
+.stub-qr {
+  background: var(--white);
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.qr-box {
+  width: 75px;
+  height: 75px;
+  border: 4px solid var(--charcoal);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 4px solid var(--charcoal);
+}
+.qr-tl { top: -4px; left: -4px; border-right: 0; border-bottom: 0; }
+.qr-tr { top: -4px; right: -4px; border-left: 0; border-bottom: 0; }
+.qr-bl { bottom: -4px; left: -4px; border-right: 0; border-top: 0; }
+.qr-br { bottom: -4px; right: -4px; border-left: 0; border-top: 0; }
+
+.qr-dot {
+  width: 20px;
+  height: 20px;
+  background: var(--charcoal);
+}
+
+.stub-id {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.stub-verified {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  color: var(--gold-light);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.ticket-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.ticket-action-btn {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.05);
+  padding: 10px 22px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.ticket-action-btn:hover {
+  background: var(--gold-light);
+  color: var(--charcoal);
+  border-color: var(--gold-light);
+}
+
+/* Printing Specific styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .ticket-wrapper, .ticket-wrapper * {
+    visibility: visible;
+  }
+  .ticket-wrapper {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    right: 50px;
+  }
+  .ticket-actions {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .wedding-ticket {
+    flex-direction: column;
+  }
+  .ticket-stub {
+    border-left: 0;
+    border-top: 2px dashed rgba(255, 255, 255, 0.15);
+  }
+  .ticket-stub::before,
+  .ticket-stub::after {
+    left: auto;
+    top: -9px;
+  }
+  .ticket-stub::before { left: -8px; }
+  .ticket-stub::after { right: -8px; }
+}

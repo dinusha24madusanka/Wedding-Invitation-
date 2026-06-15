@@ -1,0 +1,102 @@
+/* ====================================================
+   Google Fonts
+   ==================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Sacramento&family=Share+Tech+Mono&display=swap');
+
+/* ====================================================
+   CSS Design Tokens (Default: Enchanted/Cream Theme)
+   ==================================================== */
+:root {
+  --gold: #c9a96e;
+  --gold-light: #e8d5a3;
+  --gold-dark: #a07840;
+  --cream: #fdf8f0;
+  --cream-dark: #f5edd8;
+  --ivory: #fffdf7;
+  --charcoal: #2c2c2c;
+  --charcoal-light: #4a4a4a;
+  --muted: #8a8a8a;
+  --blush: #f2ddd3;
+  --blush-dark: #d9b5a7;
+  --sage: #8aad8b;
+  --white: #ffffff;
+  --shadow-soft: 0 8px 32px rgba(44, 44, 44, 0.08);
+  --shadow-card: 0 4px 24px rgba(44, 44, 44, 0.04);
+  --radius: 4px;
+  --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Montserrat', Arial, sans-serif;
+  --font-script: 'Sacramento', cursive;
+  --glow: none;
+}
+
+/* ====================================================
+   Theme: Celestial Dream (Dark Luxury)
+   ==================================================== */
+body.theme-celestial {
+  --cream: #0c1020;
+  --cream-dark: #141b35;
+  --ivory: #080b16;
+  --charcoal: #f3f4f6;
+  --charcoal-light: #d1d5db;
+  --muted: #9ca3af;
+  --gold: #dfb15b;
+  --gold-light: #ffeaa7;
+  --gold-dark: #b8860b;
+  --white: #111827;
+  --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --glow: 0 0 15px rgba(223, 177, 91, 0.4);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* ====================================================
+   Theme: Synthwave Love (Retro Future Cyber)
+   ==================================================== */
+body.theme-synthwave {
+  --cream: #120424;
+  --cream-dark: #240947;
+  --ivory: #090212;
+  --charcoal: #00ffcc;
+  --charcoal-light: #ff007f;
+  --muted: #b054e2;
+  --gold: #ff007f;
+  --gold-light: #ff79c6;
+  --gold-dark: #bd93f9;
+  --white: #1b0c36;
+  --shadow-soft: 0 8px 32px rgba(255, 0, 127, 0.2);
+  --shadow-card: 0 4px 24px rgba(0, 255, 204, 0.15);
+  --glow: 0 0 12px rgba(255, 0, 127, 0.6);
+  --font-serif: 'Share Tech Mono', monospace;
+  --font-sans: 'Share Tech Mono', monospace;
+  --radius: 0px;
+}
+
+/* ====================================================
+   Reset & Base
+   ==================================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--cream);
+  color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+img { display: block; max-width: 100%; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ====================================================
+   Scrollbar
+   ==================================================== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
