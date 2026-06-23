@@ -1,5 +1,6 @@
 import React from 'react';
 import { WEDDING } from '../weddingData';
+import couplePhoto from '../images/img_bg_2.jpg';
 import './Couple.css';
 
 export default function Couple() {
@@ -18,8 +19,8 @@ export default function Couple() {
 
         <div className="couple-cards">
           <div className="couple-card">
-            <div className="card-image-ring">
-              <img src="/images/groom.jpg" alt={WEDDING.groomFullName} />
+            <div className="card-image-ring card-image-ring--groom">
+              <img src={couplePhoto} alt={WEDDING.groomFullName} />
             </div>
             <div className="card-badge">Groom</div>
             <h3>{WEDDING.groomFullName}</h3>
@@ -31,8 +32,8 @@ export default function Couple() {
           </div>
 
           <div className="couple-card">
-            <div className="card-image-ring">
-              <img src="/images/bride.jpg" alt={WEDDING.brideFullName} />
+            <div className="card-image-ring card-image-ring--bride">
+              <img src={couplePhoto} alt={WEDDING.brideFullName} />
             </div>
             <div className="card-badge card-badge--bride">Bride</div>
             <h3>{WEDDING.brideFullName}</h3>

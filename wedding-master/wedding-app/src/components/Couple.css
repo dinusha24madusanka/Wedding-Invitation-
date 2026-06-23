@@ -112,6 +112,7 @@ body.theme-synthwave .couple-card {
   background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
   box-shadow: 0 8px 24px rgba(201,169,110,0.35);
   transition: transform 0.5s ease;
+  overflow: hidden;
 }
 .couple-card:hover .card-image-ring { transform: scale(1.04); }
 
@@ -119,9 +120,20 @@ body.theme-synthwave .couple-card {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   border-radius: 50%;
   border: 4px solid var(--white);
   display: block;
+}
+
+.card-image-ring--groom img {
+  object-position: 28% 18%;
+  transform: scale(2.8);
+}
+
+.card-image-ring--bride img {
+  object-position: 72% 18%;
+  transform: scale(2.8);
 }
 body.theme-synthwave .card-image-ring img { border-color: #1b0c36; }
 body.theme-celestial .card-image-ring img { border-color: #0c1020; }

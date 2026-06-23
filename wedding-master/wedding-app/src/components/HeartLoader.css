@@ -1,0 +1,287 @@
+/* ====================================================
+   Heart Loader Overlay Container
+   ==================================================== */
+.heart-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999; /* Ensure it stays on top of everything including navbar */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+/* Fade-out state when loaded */
+.heart-loader-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Loader inner content wrapper with glassmorphism card */
+.heart-loader-content {
+  position: relative;
+  width: 90%;
+  max-width: 480px;
+  padding: 50px 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  border-radius: calc(var(--radius) * 2.5);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.8s ease, border-color 0.8s ease;
+}
+
+/* Theme specific overrides for loader card background */
+body.theme-celestial .heart-loader-content {
+  background: rgba(12, 16, 32, 0.6);
+  border-color: rgba(223, 177, 91, 0.15);
+}
+
+body.theme-synthwave .heart-loader-content {
+  background: rgba(18, 4, 36, 0.7);
+  border-color: rgba(255, 0, 127, 0.3);
+  box-shadow: 0 0 25px rgba(255, 0, 127, 0.15);
+}
+
+/* ====================================================
+   Sparkles
+   ==================================================== */
+.loader-sparkle {
+  position: absolute;
+  color: var(--gold-light);
+  font-size: 1.4rem;
+  text-shadow: var(--glow);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sparkle-1 {
+  top: 15%;
+  left: 15%;
+  animation: twinkle 2s infinite ease-in-out 0.2s;
+}
+
+.sparkle-2 {
+  bottom: 22%;
+  right: 15%;
+  animation: twinkle 2.2s infinite ease-in-out 0.8s;
+}
+
+.sparkle-3 {
+  top: 40%;
+  right: 12%;
+  animation: twinkle 1.8s infinite ease-in-out 1.4s;
+}
+
+/* ====================================================
+   Interlocking Hearts SVG Animations
+   ==================================================== */
+.heart-svg-container {
+  width: 150px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  /* Pulsating heartbeat effect applies to container */
+  animation: pulseHeart 1.8s infinite ease-in-out 2s;
+}
+
+.interlocking-hearts {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(var(--glow));
+}
+
+/* Path styling and dash array setup for outline drawing */
+.heart-path {
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+  fill-opacity: 0;
+}
+
+/* Groom heart starts drawing first */
+.groom-heart {
+  animation: drawStroke 2s cubic-bezier(0.25, 1, 0.5, 1) forwards,
+             fillShape 1.4s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards;
+}
+
+/* Bride heart draws slightly delayed */
+.bride-heart {
+  animation: drawStroke 2s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards,
+             fillShape 1.4s cubic-bezier(0.25, 1, 0.5, 1) 1.5s forwards;
+}
+
+/* ====================================================
+   Typography & Info Box
+   ==================================================== */
+.loader-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.loader-couple-names {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  opacity: 0;
+  animation: slideInText 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+  text-shadow: var(--glow);
+}
+
+.loader-couple-names .ampersand {
+  font-family: var(--font-script);
+  font-size: 2.4rem;
+  color: var(--gold);
+  margin: 0 4px;
+}
+
+.loader-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  gap: 8px;
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: slideInText 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards;
+}
+
+.loader-divider .line {
+  height: 1px;
+  flex-grow: 1;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.loader-divider .dot {
+  width: 5px;
+  height: 5px;
+  background-color: var(--gold);
+  border-radius: 50%;
+  box-shadow: var(--glow);
+}
+
+.loader-status {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0;
+  animation: pulseFadeText 1.6s infinite ease-in-out 1.2s;
+}
+
+/* ====================================================
+   Keyframes Definitions
+   ==================================================== */
+
+/* SVG Path outline draw */
+@keyframes drawStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Fade in the fill opacity and soften color */
+@keyframes fillShape {
+  to {
+    fill-opacity: 0.12; /* Subtle rose-gold or themed tint fill */
+  }
+}
+
+/* Gentle scale pulse representing a double heartbeat */
+@keyframes pulseHeart {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.1);
+  }
+  28% {
+    transform: scale(1.05);
+  }
+  42% {
+    transform: scale(1.15);
+  }
+  70% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Twinkle/glowing star animations */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.6) rotate(0deg);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.1) rotate(90deg);
+  }
+}
+
+/* Text fade-in with minor slide-up */
+@keyframes slideInText {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulsating opacity loader text */
+@keyframes pulseFadeText {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+/* ====================================================
+   Responsive Styles
+   ==================================================== */
+@media (max-width: 480px) {
+  .heart-loader-content {
+    padding: 40px 25px;
+  }
+  .loader-couple-names {
+    font-size: 1.7rem;
+  }
+  .loader-couple-names .ampersand {
+    font-size: 2.1rem;
+  }
+  .heart-svg-container {
+    width: 130px;
+    height: 104px;
+    margin-bottom: 20px;
+  }
+}

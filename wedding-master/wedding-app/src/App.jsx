@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import HeartLoader from './components/HeartLoader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Couple from './components/Couple';
@@ -15,6 +16,7 @@ export default function App() {
 
   return (
     <>
+      <HeartLoader />
       <ThemeSelector activeTheme={theme} onThemeChange={setTheme} />
       <Navbar />
       <main>
